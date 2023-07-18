@@ -20,14 +20,12 @@ pipeline {
         stage('Push image to Hub'){
             steps{
                 script{
-                   withCredentials([string(credentialsId: 'yash', variable: 'yash')]) {
-                   bat 'docker login -u yashrajarts -p ${yash}'
-
-}
-                   bat 'docker push yashrajarts/devops-integration'
+                withCredentials([string(credentialsId: 'yashrajarts', variable: 'yashrajarts')]) {
+                   bat 'docker login -u yashrajarts -p ${yashrajarts}'
+                }
+                  // bat 'docker push yashrajarts/devops-integration'
                 }
             }
-        }
 //        stage('Deploy to k8s'){
   //          steps{
     //            script{
